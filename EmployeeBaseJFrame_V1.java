@@ -90,7 +90,7 @@ public class EmployeeBaseJFrame_V1 extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 736, 708);
 		contentPane = new JPanel();
-		contentPane.setOpaque(false);
+		contentPane.setBackground(new Color(193, 202, 236));
 		contentPane.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 255, 0), new Color(0, 0, 128), null, null));
 
 		setContentPane(contentPane);
@@ -122,7 +122,7 @@ public class EmployeeBaseJFrame_V1 extends JFrame {
 		textFieldSSN = new JTextField();
 		textFieldSSN.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.GREEN, new Color(0, 0, 128), null, null));
 		textFieldSSN.setColumns(10);
-		textFieldSSN.setBounds(129, 201, 96, 21);
+		textFieldSSN.setBounds(129, 170, 96, 21);
 		contentPane.add(textFieldSSN);
 		
 		btnSetProfile = new JButton("Set Profile");
@@ -147,19 +147,19 @@ public class EmployeeBaseJFrame_V1 extends JFrame {
 		lblNewLabel_1_2 = new JLabel("SSN:");
 		lblNewLabel_1_2.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNewLabel_1_2.setFont(new Font("新細明體", Font.PLAIN, 16));
-		lblNewLabel_1_2.setBounds(66, 204, 45, 15);
+		lblNewLabel_1_2.setBounds(66, 173, 45, 15);
 		contentPane.add(lblNewLabel_1_2);
 		
 		lblNewLabel_1_3 = new JLabel("First Name:");
 		lblNewLabel_1_3.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNewLabel_1_3.setFont(new Font("新細明體", Font.PLAIN, 16));
-		lblNewLabel_1_3.setBounds(25, 235, 86, 15);
+		lblNewLabel_1_3.setBounds(25, 204, 86, 15);
 		contentPane.add(lblNewLabel_1_3);
 		
 		lblNewLabel_1_4 = new JLabel("Last Name:");
 		lblNewLabel_1_4.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNewLabel_1_4.setFont(new Font("新細明體", Font.PLAIN, 16));
-		lblNewLabel_1_4.setBounds(25, 266, 86, 15);
+		lblNewLabel_1_4.setBounds(25, 235, 86, 15);
 		contentPane.add(lblNewLabel_1_4);
 		
 		textField_3 = new JTextField();
@@ -171,13 +171,14 @@ public class EmployeeBaseJFrame_V1 extends JFrame {
 		textFieldFN = new JTextField();
 		textFieldFN.setColumns(10);
 		textFieldFN.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.GREEN, new Color(0, 0, 128), null, null));
-		textFieldFN.setBounds(129, 232, 96, 21);
+		textFieldFN.setBounds(129, 201, 96, 21);
 		contentPane.add(textFieldFN);
 		
 		textFieldLN = new JTextField();
+		textFieldLN.setBackground(new Color(255, 255, 255));
 		textFieldLN.setColumns(10);
 		textFieldLN.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.GREEN, new Color(0, 0, 128), null, null));
-		textFieldLN.setBounds(129, 263, 96, 21);
+		textFieldLN.setBounds(129, 232, 96, 21);
 		contentPane.add(textFieldLN);
 		
 		JLabel lblNewLabel = new JLabel("Results Area");

@@ -1,25 +1,27 @@
 package PENG.polymorphism.employee.frame;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import java.awt.Font;
-import java.awt.Color;
-import java.awt.SystemColor;
-import javax.swing.SwingConstants;
-import javax.swing.JTextField;
-import javax.swing.border.BevelBorder;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 import javax.swing.JSeparator;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class EmployeeBaseJFrame_2031 extends JFrame {
+import javax.swing.UIManager;
+import javax.swing.border.BevelBorder;
+
+public class EmployeeBaseJFrame_Lin2027 extends JFrame {
 
 	public static final long serialVersionUID = 1L;
-	public JPanel contentPane;
 	public JTextField textFieldSSN;
 	public JTextField textFieldEarnings;
 	public JTextField textFieldFN;
@@ -32,19 +34,9 @@ public class EmployeeBaseJFrame_2031 extends JFrame {
 	public JTextField textFieldLA;
 	public JTextField textFieldLB;
 	public JTextField textFieldLC;
-	public JLabel lblNewLabel_3;
-	public JLabel lblDistribution;
-	public JLabel lblAlevel;
-	public JLabel lblBlevel;
-	public JLabel lblClevel;
-	public JLabel lblThousand;
-	public JLabel lblUnit;
-	public JLabel lblLN;
-	public JLabel lblFN;
-	public JLabel lblSSN;
-	public JLabel lblEarnings;
+	public JButton btnSetProfile;
+	public JButton btnClearProfileresults;
 	public JButton btnClearRecord;
-	public JLabel lblTotalEmployee;
 	public JButton btnCalculate;
 	public JButton btnOpenFile;
 	public JButton btnOutputToTextarea;
@@ -54,12 +46,34 @@ public class EmployeeBaseJFrame_2031 extends JFrame {
 	public JButton btnCloseFile;
 	public JButton btnRefresh;
 	public JButton btnExit;
-	public JButton btnSetProfile;
+	public JLabel lblNewLabel_3;
 	public JLabel lblCp;
-	public JTextField textFieldCp;
-	public JButton btnClearProfileresults;
+	public JLabel lblTotalEmployee;
+	public JLabel lblEarnings;
+	public JLabel lblResultsArea;
+	public JLabel lblSSN;
+	public JLabel lblFN;
+	public JLabel lblEmployeeCounter;
+	public JLabel lblHighestEarnings;
+	public JLabel lblLN;
+	public JLabel lblLowestEarnings;
+	public JLabel lblAverageEarnings;
+	public JLabel lblUnit;
+	public JLabel lblAlevel;
+	public JLabel lblBlevel;
+	public JLabel lblClevel;
+	public JLabel lblUnit_1;
+	public JSeparator separator;
+	public JSeparator separator_2;
+	public JSeparator separator_1_1;
+	public JPanel contentPane;
+	private JLabel lblFN_1;
+	private JTextField textFieldCp;
+	private JLabel lblThousand;
+	private JLabel lblDistributionOfWagelevels;
+	private JLabel lblNewLabel;
 	
-	
+	public static String employeeType;
 
 	/**
 	 * Launch the application.
@@ -68,7 +82,7 @@ public class EmployeeBaseJFrame_2031 extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					EmployeeBaseJFrame_2031 frame = new EmployeeBaseJFrame_2031();
+					EmployeeBaseJFrame_Lin2027 frame = new EmployeeBaseJFrame_Lin2027(employeeType);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -80,7 +94,7 @@ public class EmployeeBaseJFrame_2031 extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public EmployeeBaseJFrame_2031() {
+	public EmployeeBaseJFrame_Lin2027(String employeeYype) {
 		setTitle("Employee-Book Application (by PENG 2023/11/08)");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 736, 708);
@@ -239,13 +253,13 @@ public class EmployeeBaseJFrame_2031 extends JFrame {
 		textFieldAverageEarning.setBounds(589, 263, 96, 21);
 		contentPane.add(textFieldAverageEarning);
 		
-		lblDistribution = new JLabel("Distribution of Wage-Levels");
-		lblDistribution.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, Color.RED, null, null));
-		lblDistribution.setBackground(Color.CYAN);
-		lblDistribution.setOpaque(true);
-		lblDistribution.setHorizontalAlignment(SwingConstants.CENTER);
-		lblDistribution.setBounds(36, 334, 649, 15);
-		contentPane.add(lblDistribution);
+		lblDistributionOfWagelevels = new JLabel("Distribution of Wage-Levels");
+		lblDistributionOfWagelevels.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, Color.RED, null, null));
+		lblDistributionOfWagelevels.setBackground(Color.CYAN);
+		lblDistributionOfWagelevels.setOpaque(true);
+		lblDistributionOfWagelevels.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDistributionOfWagelevels.setBounds(36, 334, 649, 15);
+		contentPane.add(lblDistributionOfWagelevels);
 		
 		lblAlevel = new JLabel("A_Level>=");
 		lblAlevel.setHorizontalAlignment(SwingConstants.LEFT);
@@ -292,58 +306,19 @@ public class EmployeeBaseJFrame_2031 extends JFrame {
 		lblUnit.setBounds(66, 393, 45, 15);
 		contentPane.add(lblUnit);
 		
-		lblThousand = new JLabel("Thousand");
-		lblThousand.setOpaque(true);
-		lblThousand.setBackground(new Color(255, 255, 0));
-		lblThousand.setHorizontalAlignment(SwingConstants.CENTER);
-		lblThousand.setFont(new Font("新細明體", Font.PLAIN, 16));
-		lblThousand.setBounds(142, 388, 96, 25);
-		contentPane.add(lblThousand);
+
 		
 		btnCalculate = new JButton("Calculate");
 		btnCalculate.setBackground(Color.LIGHT_GRAY);
 		btnCalculate.setBounds(33, 483, 96, 23);
 		contentPane.add(btnCalculate);
 		
-		btnOpenFile = new JButton("Open File");
-		btnOpenFile.setBackground(Color.LIGHT_GRAY);
-		btnOpenFile.setBounds(33, 534, 96, 23);
-		contentPane.add(btnOpenFile);
-		
-		btnOutputToTextarea = new JButton("Output to TextArea");
-		btnOutputToTextarea.setBackground(Color.LIGHT_GRAY);
-		btnOutputToTextarea.setBounds(180, 483, 160, 23);
-		contentPane.add(btnOutputToTextarea);
-		
-		btnWriteFile = new JButton("Write File");
-		btnWriteFile.setBackground(Color.LIGHT_GRAY);
-		btnWriteFile.setBounds(180, 534, 96, 23);
-		contentPane.add(btnWriteFile);
-		
-		btnPiechartDemo = new JButton("Pie-Chart Demo");
-		btnPiechartDemo.setBackground(Color.LIGHT_GRAY);
-		btnPiechartDemo.setBounds(407, 483, 160, 23);
-		contentPane.add(btnPiechartDemo);
-		
-		btnReadFile = new JButton("Read File");
-		btnReadFile.setBackground(Color.LIGHT_GRAY);
-		btnReadFile.setBounds(329, 534, 96, 23);
-		contentPane.add(btnReadFile);
-		
-		btnCloseFile = new JButton("Close File");
-		btnCloseFile.setBackground(Color.LIGHT_GRAY);
-		btnCloseFile.setBounds(471, 534, 96, 23);
-		contentPane.add(btnCloseFile);
 		
 		btnRefresh = new JButton("Refresh");
 		btnRefresh.setBackground(Color.LIGHT_GRAY);
 		btnRefresh.setBounds(589, 483, 96, 23);
 		contentPane.add(btnRefresh);
 		
-		btnExit = new JButton("Exit");
-		btnExit.setBackground(Color.LIGHT_GRAY);
-		btnExit.setBounds(589, 534, 96, 23);
-		contentPane.add(btnExit);
 		
 		JSeparator separator = new JSeparator();
 		separator.setBounds(385, 379, 170, 0);
@@ -408,5 +383,69 @@ public class EmployeeBaseJFrame_2031 extends JFrame {
 		lblCLowerThreshold.setBackground(new Color(250, 250, 210));
 		lblCLowerThreshold.setBounds(364, 418, 129, 20);
 		contentPane.add(lblCLowerThreshold);
+		
+		lblThousand = new JLabel("Thousand");
+		lblThousand.setOpaque(true);
+		lblThousand.setHorizontalAlignment(SwingConstants.CENTER);
+		lblThousand.setFont(new Font("新細明體", Font.PLAIN, 16));
+		lblThousand.setBackground(Color.YELLOW);
+		lblThousand.setBounds(129, 383, 96, 25);
+		contentPane.add(lblThousand);
+		
+		lblDistributionOfWagelevels = new JLabel("Distribution of Wage-Levels");
+		lblDistributionOfWagelevels.setOpaque(true);
+		lblDistributionOfWagelevels.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDistributionOfWagelevels.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, Color.RED, null, null));
+		lblDistributionOfWagelevels.setBackground(Color.CYAN);
+		lblDistributionOfWagelevels.setBounds(33, 337, 649, 15);
+		contentPane.add(lblDistributionOfWagelevels);
+		
+		JButton btnOpenFile = new JButton("Open File");
+		btnOpenFile.setBackground(Color.LIGHT_GRAY);
+		btnOpenFile.setBounds(33, 553, 96, 23);
+		contentPane.add(btnOpenFile);
+		
+		JButton btnOutputToTextarea = new JButton("Output to TextArea");
+		btnOutputToTextarea.setBackground(Color.LIGHT_GRAY);
+		btnOutputToTextarea.setBounds(160, 483, 160, 23);
+		contentPane.add(btnOutputToTextarea);
+		
+		JButton btnPiechartDemo = new JButton("Pie-Chart Demo");
+		btnPiechartDemo.setBackground(Color.LIGHT_GRAY);
+		btnPiechartDemo.setBounds(385, 483, 160, 23);
+		contentPane.add(btnPiechartDemo);
+		
+		JButton btnRefresh = new JButton("Refresh");
+		btnRefresh.setBackground(Color.LIGHT_GRAY);
+		btnRefresh.setBounds(589, 483, 96, 23);
+		contentPane.add(btnRefresh);
+		
+		JButton btnWriteFile = new JButton("Write File");
+		btnWriteFile.setBackground(Color.LIGHT_GRAY);
+		btnWriteFile.setBounds(160, 553, 96, 23);
+		contentPane.add(btnWriteFile);
+		
+		JButton btnReadFile = new JButton("Read File");
+		btnReadFile.setBackground(Color.LIGHT_GRAY);
+		btnReadFile.setBounds(299, 553, 96, 23);
+		contentPane.add(btnReadFile);
+		
+		JButton btnCloseFile = new JButton("Close File");
+		btnCloseFile.setBackground(Color.LIGHT_GRAY);
+		btnCloseFile.setBounds(441, 553, 96, 23);
+		contentPane.add(btnCloseFile);
+		
+		JButton btnExit = new JButton("Exit");
+		btnExit.setBackground(Color.LIGHT_GRAY);
+		btnExit.setBounds(589, 553, 96, 23);
+		contentPane.add(btnExit);
+		
+		lblNewLabel = new JLabel("~");
+		lblNewLabel.setOpaque(true);
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBackground(new Color(250, 250, 210));
+		lblNewLabel.setBounds(413, 388, 29, 20);
+		contentPane.add(lblNewLabel);
+		
 	}
 }
